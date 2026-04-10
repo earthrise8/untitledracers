@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Build Session</title>
+  <desc id="desc">Temporary gallery image showing build session theme.</desc>
+  <rect width="1200" height="900" fill="#13284a"/>
+  <rect x="80" y="80" width="1040" height="740" fill="#ffffff" fill-opacity="0.08" stroke="#f47a2a" stroke-width="8"/>
+  <circle cx="240" cy="640" r="96" fill="#f47a2a"/>
+  <circle cx="470" cy="640" r="96" fill="#f47a2a"/>
+  <rect x="220" y="480" width="320" height="80" rx="20" fill="#ffffff"/>
+  <text x="120" y="180" fill="#ffffff" font-size="64" font-family="Arial, Helvetica, sans-serif" font-weight="700">BUILD DAY</text>
+  <text x="120" y="760" fill="#ffffff" font-size="38" font-family="Arial, Helvetica, sans-serif">Irvington HS - Fremont, CA</text>
+</svg>

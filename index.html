@@ -1,1 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Untitled Racers | H2GP Team</title>
+	<meta name="description" content="Untitled Racers is a high school team competing in H2GP, the Hydrogen Grand Prix student competition.">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--white: #ffffff;
+			--ink: #0f1a2b;
+			--navy: #142544;
+			--navy-deep: #0a1730;
+			--slate: #3f5170;
+			--orange: #f47a2a;
+			--orange-soft: #ffd9bf;
+			--panel: #ffffff;
+			--line: #d1d9e8;
+			--radius: 20px;
+			--shadow: 0 18px 35px rgba(10, 23, 48, 0.14);
+		}
+
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: "Space Grotesk", sans-serif;
+			background:
+				radial-gradient(circle at 12% 6%, rgba(244, 122, 42, 0.24), transparent 24%),
+				radial-gradient(circle at 85% 16%, rgba(20, 37, 68, 0.14), transparent 28%),
+				#f4f7fc;
+			color: var(--ink);
+			line-height: 1.55;
+		}
+
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+
+		.container {
+			width: min(1120px, 92vw);
+			margin: 0 auto;
+		}
+
+		.site-header {
+			position: sticky;
+			top: 0;
+			z-index: 20;
+			backdrop-filter: blur(10px);
+			background: rgba(255, 255, 255, 0.9);
+			border-bottom: 1px solid rgba(20, 37, 68, 0.12);
+		}
+
+		.nav-wrap {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 0.9rem 0;
+			gap: 1rem;
+		}
+
+		.brand {
+			font-family: "Bebas Neue", sans-serif;
+			letter-spacing: 1px;
+			font-size: 1.6rem;
+			color: var(--ink);
+			display: flex;
+			align-items: center;
+			gap: 0.6rem;
+		}
+
+		.brand-bolt {
+			width: 12px;
+			height: 12px;
+			border-radius: 50%;
+			background: var(--orange);
+			box-shadow: 0 0 0 7px rgba(244, 122, 42, 0.22);
+		}
+
+		.nav-links {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 1rem;
+			font-weight: 600;
+			font-size: 0.92rem;
+			color: var(--navy);
+		}
+
+		.hero {
+			padding: 3.4rem 0 2.4rem;
+			display: grid;
+			grid-template-columns: 1.15fr 0.85fr;
+			gap: 1.3rem;
+			align-items: stretch;
+		}
+
+		.hero-copy {
+			background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.78));
+			border: 1px solid rgba(20, 37, 68, 0.16);
+			border-radius: var(--radius);
+			box-shadow: var(--shadow);
+			padding: 2rem;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.hero-copy::after {
+			content: "";
+			position: absolute;
+			right: -40px;
+			top: -48px;
+			width: 160px;
+			height: 160px;
+			border-radius: 50%;
+			border: 16px solid rgba(244, 122, 42, 0.2);
+		}
+
+		.eyebrow {
+			display: inline-block;
+			padding: 0.25rem 0.65rem;
+			border-radius: 999px;
+			background: var(--navy-deep);
+			color: #fff;
+			font-size: 0.72rem;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			margin-bottom: 0.95rem;
+		}
+
+		h1,
+		h2,
+		h3 {
+			font-family: "Bebas Neue", sans-serif;
+			letter-spacing: 0.6px;
+			line-height: 1;
+		}
+
+		h1 {
+			font-size: clamp(2.4rem, 6vw, 4rem);
+			margin-bottom: 0.7rem;
+			color: var(--ink);
+		}
+
+		.hero-sub {
+			font-size: clamp(1rem, 1.2vw, 1.1rem);
+			color: var(--slate);
+			max-width: 50ch;
+			margin-bottom: 1.3rem;
+		}
+
+		.hero-actions {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.7rem;
+			margin-bottom: 1.2rem;
+		}
+
+		.btn {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			border-radius: 10px;
+			padding: 0.62rem 0.95rem;
+			border: 1px solid transparent;
+			font-weight: 700;
+			font-size: 0.9rem;
+			transition: transform 140ms ease, box-shadow 140ms ease;
+		}
+
+		.btn:hover {
+			transform: translateY(-2px);
+		}
+
+		.btn-main {
+			background: var(--orange);
+			color: #fff;
+			box-shadow: 0 12px 20px rgba(244, 122, 42, 0.28);
+		}
+
+		.btn-ghost {
+			border-color: rgba(20, 37, 68, 0.2);
+			color: var(--navy);
+			background: rgba(255, 255, 255, 0.8);
+		}
+
+		.hero-stats {
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 0.55rem;
+		}
+
+		.stat {
+			border: 1px dashed rgba(20, 37, 68, 0.34);
+			border-radius: 11px;
+			padding: 0.55rem;
+			background: rgba(255, 255, 255, 0.66);
+			text-align: center;
+		}
+
+		.stat b {
+			font-size: 1.1rem;
+			color: var(--ink);
+			display: block;
+			margin-bottom: 0.1rem;
+		}
+
+		.hero-media {
+			background: linear-gradient(150deg, #122448 0%, #0b1834 100%);
+			color: #f2f6fb;
+			border-radius: var(--radius);
+			padding: 1.2rem;
+			box-shadow: var(--shadow);
+			display: grid;
+			align-content: end;
+			min-height: 280px;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.hero-media img {
+			position: absolute;
+			inset: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			opacity: 0.76;
+		}
+
+		.hero-media .hero-overlay {
+			position: relative;
+			z-index: 1;
+			background: linear-gradient(180deg, rgba(10, 23, 48, 0.05), rgba(10, 23, 48, 0.78));
+			border-radius: 12px;
+			padding: 1rem;
+			border: 1px solid rgba(255, 255, 255, 0.2);
+		}
+
+		.hero-media h2 {
+			font-size: 2rem;
+		}
+
+		.hero-media p {
+			color: rgba(242, 246, 251, 0.85);
+			font-size: 0.95rem;
+			max-width: 26ch;
+		}
+
+		section {
+			padding: 2.2rem 0;
+		}
+
+		.section-title {
+			display: flex;
+			align-items: end;
+			justify-content: space-between;
+			gap: 1rem;
+			margin-bottom: 1rem;
+		}
+
+		.section-title h2 {
+			font-size: clamp(1.9rem, 3vw, 2.8rem);
+		}
+
+		.muted {
+			color: var(--slate);
+		}
+
+		.grid-3 {
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 0.9rem;
+		}
+
+		.card {
+			background: var(--panel);
+			border: 1px solid var(--line);
+			border-radius: 16px;
+			padding: 1rem;
+			box-shadow: 0 6px 14px rgba(22, 34, 44, 0.06);
+			opacity: 0;
+			transform: translateY(18px);
+			animation: reveal 640ms ease forwards;
+		}
+
+		.card:nth-child(2) { animation-delay: 80ms; }
+		.card:nth-child(3) { animation-delay: 140ms; }
+		.card:nth-child(4) { animation-delay: 220ms; }
+		.card:nth-child(5) { animation-delay: 300ms; }
+		.card:nth-child(6) { animation-delay: 380ms; }
+
+		.card h3 {
+			font-size: 1.5rem;
+			margin-bottom: 0.45rem;
+		}
+
+		.tag {
+			display: inline-flex;
+			background: var(--orange-soft);
+			border: 1px solid rgba(244, 122, 42, 0.45);
+			color: #8a420f;
+			padding: 0.2rem 0.5rem;
+			border-radius: 999px;
+			font-size: 0.7rem;
+			letter-spacing: 0.06em;
+			text-transform: uppercase;
+			margin-bottom: 0.5rem;
+		}
+
+		.timeline {
+			display: grid;
+			gap: 0.65rem;
+			margin-top: 0.7rem;
+		}
+
+		.timeline-item {
+			border-left: 4px solid var(--orange);
+			border-radius: 7px;
+			background: rgba(255, 255, 255, 0.9);
+			border: 1px solid var(--line);
+			padding: 0.7rem 0.8rem;
+		}
+
+		.gallery-grid {
+			display: grid;
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+			gap: 0.8rem;
+		}
+
+		.photo-card {
+			background: var(--panel);
+			border: 1px solid var(--line);
+			border-radius: 12px;
+			overflow: hidden;
+			box-shadow: 0 6px 14px rgba(10, 23, 48, 0.08);
+		}
+
+		.photo-card img {
+			aspect-ratio: 4 / 3;
+			display: block;
+			width: 100%;
+			height: auto;
+			object-fit: cover;
+		}
+
+		.photo-card p {
+			padding: 0.7rem 0.75rem;
+			color: var(--slate);
+			font-size: 0.85rem;
+			font-weight: 500;
+		}
+
+		.quote-band {
+			margin-top: 2.2rem;
+			background: linear-gradient(120deg, #122346 0%, #1a335f 100%);
+			border-radius: 18px;
+			padding: 1.3rem;
+			color: #ecf3f9;
+			border: 1px solid rgba(255, 255, 255, 0.14);
+		}
+
+		.quote-band p {
+			font-size: 1.08rem;
+			max-width: 70ch;
+		}
+
+		footer {
+			padding: 2rem 0 2.4rem;
+			color: var(--navy);
+		}
+
+		.sources {
+			margin-top: 0.9rem;
+			font-size: 0.88rem;
+		}
+
+		.sources li {
+			margin-left: 1rem;
+			margin-top: 0.3rem;
+		}
+
+		@keyframes reveal {
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		@media (max-width: 950px) {
+			.hero {
+				grid-template-columns: 1fr;
+			}
+
+			.grid-3 {
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+			}
+
+			.gallery-grid {
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+			}
+		}
+
+		@media (max-width: 640px) {
+			.nav-wrap {
+				flex-direction: column;
+				align-items: flex-start;
+			}
+
+			.hero-copy {
+				padding: 1.4rem;
+			}
+
+			.hero-stats {
+				grid-template-columns: 1fr;
+			}
+
+			.grid-3,
+			.gallery-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.section-title {
+				flex-direction: column;
+				align-items: flex-start;
+			}
+		}
+	</style>
+</head>
+<body>
+	<header class="site-header">
+		<div class="container nav-wrap">
+			<a class="brand" href="#top">
+				<span class="brand-bolt" aria-hidden="true"></span>
+				UNTITLED RACERS
+			</a>
+			<nav class="nav-links" aria-label="Primary">
+				<a href="#about">About</a>
+				<a href="#h2gp">H2GP</a>
+				<a href="#team">Team</a>
+				<a href="#gallery">Gallery</a>
+				<a href="#support">Support</a>
+			</nav>
+		</div>
+	</header>
+
+	<main id="top" class="container">
+		<section class="hero" aria-label="Intro">
+			<article class="hero-copy">
+				<span class="eyebrow">High School Clean Energy Team</span>
+				<h1>Racing Hydrogen. Learning Fast.</h1>
+				<p class="hero-sub">
+					We are Untitled Racers from Irvington High School in Fremont, California.
+					Our student team competes in H2GP as we build, test,
+					and race hydrogen-powered cars while developing real engineering, strategy,
+					and teamwork skills.
+				</p>
+				<div class="hero-actions">
+					<a class="btn btn-main" href="#support">Partner With Us</a>
+					<a class="btn btn-ghost" href="#gallery">View Team Gallery</a>
+				</div>
+				<div class="hero-stats">
+					<div class="stat">
+						<b>4-hour</b>
+						PRO race format
+					</div>
+					<div class="stat">
+						<b>Top 40</b>
+						teams reach World Final
+					</div>
+					<div class="stat">
+						<b>13-17</b>
+						H2GP PRO age band
+					</div>
+				</div>
+			</article>
+
+			<aside class="hero-media" aria-label="Hero visual">
+				<!-- Maintainer note: replace images/hero-temp.svg with your best race-day image. -->
+				<img src="images/hero-temp.svg" alt="Untitled Racers hydrogen car concept art">
+				<div class="hero-overlay">
+					<h2>Race Bay</h2>
+					<p>
+						Irvington High School students preparing for H2GP race strategy,
+						pit coordination, and efficiency testing.
+					</p>
+				</div>
+			</aside>
+		</section>
+
+		<section id="about">
+			<div class="section-title">
+				<h2>Who We Are</h2>
+				<p class="muted">Irvington High School | Fremont, California</p>
+			</div>
+			<div class="grid-3">
+				<article class="card">
+					<span class="tag">Identity</span>
+					<h3>Our Team</h3>
+					<p>
+						We are students from Irvington High School focused on clean mobility,
+						sustainable technology, and competition-ready performance.
+					</p>
+				</article>
+				<article class="card">
+					<span class="tag">Build</span>
+					<h3>What We Do</h3>
+					<p>
+						We design, assemble, and tune hydrogen race cars, balancing speed,
+						efficiency, reliability, and strategy under race pressure.
+					</p>
+				</article>
+				<article class="card">
+					<span class="tag">Mission</span>
+					<h3>Why It Matters</h3>
+					<p>
+						We want to show Fremont-area students can lead in advanced energy systems while
+						inspiring younger learners to get into STEM and sustainable engineering.
+					</p>
+				</article>
+			</div>
+		</section>
+
+		<section id="h2gp">
+			<div class="section-title">
+				<h2>What Is H2GP?</h2>
+				<p class="muted">Competition info pulled from H2GP/STEP pages</p>
+			</div>
+
+			<div class="grid-3">
+				<article class="card">
+					<span class="tag">Global Program</span>
+					<h3>Student Hydrogen Racing</h3>
+					<p>
+						H2GP describes itself as a global racing series where students design,
+						build, and race hydrogen-powered cars through hands-on STEM learning.
+					</p>
+				</article>
+				<article class="card">
+					<span class="tag">Age Pathway</span>
+					<h3>XPR, Sprint, Pro</h3>
+					<p>
+						Program bands include XPR (ages 7-9), Sprint (ages 10-13), and Pro (ages 13-17),
+						with Pro focused on advanced engineering and international competition.
+					</p>
+				</article>
+				<article class="card">
+					<span class="tag">Race Format</span>
+					<h3>Endurance + Strategy</h3>
+					<p>
+						Official H2GP Pro racing materials reference a 4-hour race format,
+						with teams managing speed, energy, and pit decisions.
+					</p>
+				</article>
+			</div>
+
+			<div class="timeline" aria-label="H2GP progression">
+				<div class="timeline-item"><strong>Step 1:</strong> Local and regional qualifiers</div>
+				<div class="timeline-item"><strong>Step 2:</strong> National-level race events</div>
+				<div class="timeline-item"><strong>Step 3:</strong> World Final week with racing, workshops, and cultural exchange</div>
+			</div>
+
+			<div class="quote-band">
+				<p>
+					World Final context: STEP Foundation event pages describe top student teams and
+					highlight week-long finals that combine racing with technology workshops,
+					industry exposure, and international collaboration.
+				</p>
+			</div>
+		</section>
+
+		<section id="team">
+			<div class="section-title">
+				<h2>Team Dashboard</h2>
+				<p class="muted">Current season snapshot</p>
+			</div>
+			<div class="grid-3">
+				<article class="card">
+					<span class="tag">Roster</span>
+					<h3>Drivers + Engineers</h3>
+					<p>
+						Student leads rotate through driving, strategy, data logging, and pit management roles.
+					</p>
+				</article>
+				<article class="card">
+					<span class="tag">Car</span>
+					<h3>Vehicle Spec Sheet</h3>
+					<p>
+						Current focus areas include drivetrain tuning, fuel efficiency, and consistent lap pacing.
+					</p>
+				</article>
+				<article class="card">
+					<span class="tag">Results</span>
+					<h3>Season Log</h3>
+					<p>
+						Our 2026 season goal is to improve race consistency and qualify for top-tier events.
+					</p>
+				</article>
+			</div>
+		</section>
+
+		<section id="gallery">
+			<div class="section-title">
+				<h2>Team Gallery</h2>
+				<p class="muted">Build, test, race, repeat</p>
+			</div>
+			<div class="gallery-grid">
+				<!-- Maintainer note: replace these temporary files in images/ with your real team photos. -->
+				<figure class="photo-card">
+					<img src="images/gallery-build.svg" alt="Untitled Racers students working on car assembly">
+					<p>Build session in the workshop: chassis setup and wiring checks.</p>
+				</figure>
+				<figure class="photo-card">
+					<img src="images/gallery-test.svg" alt="Untitled Racers testing hydrogen car performance">
+					<p>Track testing for speed consistency and corner control.</p>
+				</figure>
+				<figure class="photo-card">
+					<img src="images/gallery-race.svg" alt="Untitled Racers posing at competition">
+					<p>Competition day energy with the full Irvington team on site.</p>
+				</figure>
+				<figure class="photo-card">
+					<img src="images/gallery-pit.svg" alt="Untitled Racers pit crew preparing for race">
+					<p>Pit crew prep focused on quick checks and clean handoffs.</p>
+				</figure>
+			</div>
+		</section>
+
+		<section id="support">
+			<div class="section-title">
+				<h2>Support The Team</h2>
+				<p class="muted">Help power student engineering in Fremont</p>
+			</div>
+			<div class="grid-3">
+				<article class="card">
+					<span class="tag">Sponsors</span>
+					<h3>Partner Opportunities</h3>
+					<p>
+						Support helps cover race fees, replacement parts, practice materials, and travel.
+					</p>
+				</article>
+				<article class="card">
+					<span class="tag">Mentors</span>
+					<h3>Volunteer With Us</h3>
+					<p>
+						Local engineers and STEM mentors help our team level up design and race strategy.
+					</p>
+				</article>
+				<article class="card">
+					<span class="tag">Contact</span>
+					<h3>Reach The Team</h3>
+					<p>
+						For sponsorship and collaboration inquiries, contact the Irvington High School team advisors.
+					</p>
+				</article>
+			</div>
+		</section>
+	</main>
+
+	<footer class="container">
+		<p><strong>Untitled Racers</strong> | High School H2GP Team</p>
+		<p class="muted">Updated <span id="year"></span></p>
+
+		<div class="sources">
+			<p><strong>Sources used for competition facts:</strong></p>
+			<ul>
+				<li>https://www.h2grandprix.com/</li>
+				<li>https://www.h2grandprix.com/about-h2gp-pro/t1387</li>
+				<li>https://www.h2grandprix.com/racing/t1389</li>
+				<li>https://www.step-foundation.org/impact</li>
+				<li>https://www.step-foundation.org/world-final</li>
+			</ul>
+			<p class="muted">Race formats and participation details can change by season; verify before publishing official claims.</p>
+		</div>
+	</footer>
+
+	<script>
+		document.getElementById("year").textContent = new Date().getFullYear();
+	</script>
+</body>
+</html>
 

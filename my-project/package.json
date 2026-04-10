@@ -1,0 +1,26 @@
+{
+  "name": "my-project",
+  "version": "1.0.0",
+  "description": "A project for the H2GP Competition, featuring dynamic content loading and type-safe data structures.",
+  "main": "src/main.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "ts-node src/main.ts"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "dompurify": "^2.2.9"
+  },
+  "devDependencies": {
+    "typescript": "^4.4.4",
+    "ts-node": "^10.4.0"
+  },
+  "keywords": [
+    "H2GP",
+    "Competition",
+    "Racing",
+    "TypeScript"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
