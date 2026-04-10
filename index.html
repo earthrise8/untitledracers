@@ -339,6 +339,13 @@
 			border-radius: 12px;
 			overflow: hidden;
 			box-shadow: 0 6px 14px rgba(10, 23, 48, 0.08);
+			cursor: zoom-in;
+			transition: transform 140ms ease, box-shadow 140ms ease;
+		}
+
+		.photo-card:hover {
+			transform: translateY(-3px);
+			box-shadow: 0 10px 20px rgba(10, 23, 48, 0.14);
 		}
 
 		.photo-card img {
@@ -385,6 +392,233 @@
 			margin-top: 0.3rem;
 		}
 
+		.easter-egg-wrap {
+			display: flex;
+			justify-content: center;
+			margin-top: 1.2rem;
+		}
+
+		.easter-egg-trigger {
+			font: inherit;
+			font-size: 0.75rem;
+			letter-spacing: 0.05em;
+			color: rgba(20, 37, 68, 0.62);
+			background: transparent;
+			border: 1px dashed rgba(20, 37, 68, 0.32);
+			border-radius: 999px;
+			padding: 0.28rem 0.62rem;
+			cursor: pointer;
+			transition: color 140ms ease, border-color 140ms ease;
+		}
+
+		.easter-egg-trigger:hover {
+			color: var(--orange);
+			border-color: rgba(244, 122, 42, 0.65);
+		}
+
+		.game-overlay {
+			position: fixed;
+			inset: 0;
+			background: rgba(8, 16, 34, 0.84);
+			backdrop-filter: blur(4px);
+			display: grid;
+			place-items: center;
+			padding: 1rem;
+			z-index: 120;
+			opacity: 0;
+			pointer-events: none;
+			transition: opacity 180ms ease;
+		}
+
+		.game-overlay.is-open {
+			opacity: 1;
+			pointer-events: auto;
+		}
+
+		.game-panel {
+			width: min(980px, 96vw);
+			max-height: 96vh;
+			overflow: auto;
+			background: #f6f9ff;
+			border: 1px solid rgba(20, 37, 68, 0.24);
+			border-radius: 18px;
+			padding: 1rem;
+			box-shadow: 0 24px 44px rgba(3, 10, 23, 0.45);
+		}
+
+		.game-top {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 0.8rem;
+			margin-bottom: 0.4rem;
+		}
+
+		.game-top h2 {
+			font-size: clamp(1.7rem, 3.2vw, 2.5rem);
+			color: var(--navy-deep);
+		}
+
+		.game-close {
+			font: inherit;
+			font-weight: 700;
+			background: #fff;
+			color: var(--navy);
+			border: 1px solid rgba(20, 37, 68, 0.35);
+			border-radius: 10px;
+			padding: 0.45rem 0.7rem;
+			cursor: pointer;
+		}
+
+		.game-help {
+			font-size: 0.9rem;
+			color: var(--slate);
+			margin-bottom: 0.75rem;
+		}
+
+		.game-hud {
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 0.55rem;
+			margin-bottom: 0.75rem;
+		}
+
+		.hud-card {
+			background: #fff;
+			border: 1px solid var(--line);
+			border-radius: 10px;
+			padding: 0.55rem;
+		}
+
+		.hud-head {
+			display: flex;
+			justify-content: space-between;
+			font-size: 0.84rem;
+			color: var(--navy);
+			margin-bottom: 0.28rem;
+		}
+
+		.meter {
+			height: 12px;
+			border-radius: 999px;
+			background: #e8eef8;
+			overflow: hidden;
+			border: 1px solid rgba(20, 37, 68, 0.12);
+		}
+
+		.meter-fill {
+			height: 100%;
+			width: 100%;
+			transition: width 120ms linear;
+		}
+
+		.meter-fill.battery {
+			background: linear-gradient(90deg, #1e4ea6 0%, #4f79c5 100%);
+		}
+
+		.meter-fill.sticks {
+			background: linear-gradient(90deg, #f47a2a 0%, #ffb37d 100%);
+		}
+
+		.meter-fill.cell {
+			background: linear-gradient(90deg, #ff8a3e 0%, #ffc596 100%);
+		}
+
+		.game-canvas {
+			width: 100%;
+			height: auto;
+			display: block;
+			border-radius: 12px;
+			border: 1px solid rgba(20, 37, 68, 0.2);
+			background: #0a1730;
+		}
+
+		.game-status {
+			margin-top: 0.6rem;
+			font-size: 0.88rem;
+			color: var(--navy);
+		}
+
+		.lightbox-overlay {
+			position: fixed;
+			inset: 0;
+			background: rgba(5, 11, 25, 0.88);
+			z-index: 140;
+			display: grid;
+			place-items: center;
+			padding: 1rem;
+			opacity: 0;
+			pointer-events: none;
+			transition: opacity 180ms ease;
+		}
+
+		.lightbox-overlay.is-open {
+			opacity: 1;
+			pointer-events: auto;
+		}
+
+		.lightbox-card {
+			width: min(980px, 96vw);
+			background: #f8fbff;
+			border: 1px solid rgba(20, 37, 68, 0.3);
+			border-radius: 14px;
+			padding: 0.7rem;
+		}
+
+		.lightbox-card img {
+			width: 100%;
+			height: auto;
+			display: block;
+			border-radius: 10px;
+			max-height: 75vh;
+			object-fit: contain;
+			background: #0f1a2b;
+		}
+
+		.lightbox-meta {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			gap: 0.6rem;
+			padding-top: 0.45rem;
+			font-size: 0.88rem;
+			color: var(--navy);
+		}
+
+		.lightbox-close {
+			font: inherit;
+			border: 1px solid rgba(20, 37, 68, 0.34);
+			background: #fff;
+			border-radius: 8px;
+			padding: 0.32rem 0.52rem;
+			cursor: pointer;
+			font-weight: 700;
+		}
+
+		.game-controls {
+			display: flex;
+			gap: 0.55rem;
+			margin-top: 0.6rem;
+			flex-wrap: wrap;
+		}
+
+		.game-action {
+			font: inherit;
+			font-size: 0.82rem;
+			font-weight: 700;
+			background: #fff;
+			color: var(--navy);
+			border: 1px solid rgba(20, 37, 68, 0.3);
+			border-radius: 9px;
+			padding: 0.46rem 0.7rem;
+			cursor: pointer;
+		}
+
+		.game-action:hover {
+			border-color: rgba(244, 122, 42, 0.65);
+			color: #8a420f;
+		}
+
 		@keyframes reveal {
 			to {
 				opacity: 1;
@@ -429,6 +663,10 @@
 				flex-direction: column;
 				align-items: flex-start;
 			}
+
+			.game-hud {
+				grid-template-columns: 1fr;
+			}
 		}
 	</style>
 </head>
@@ -456,7 +694,7 @@
 				<h1>Racing Hydrogen. Learning Fast.</h1>
 				<p class="hero-sub">
 					We are Untitled Racers from Irvington High School in Fremont, California.
-					Our student team competes in H2GP as we build, test,
+					Our student team has qualified for the H2GP World Finals in Switzerland, and we compete as we build, test,
 					and race hydrogen-powered cars while developing real engineering, strategy,
 					and teamwork skills.
 				</p>
@@ -470,8 +708,8 @@
 						PRO race format
 					</div>
 					<div class="stat">
-						<b>Top 40</b>
-						teams reach World Final
+						<b>Qualified</b>
+						World Finals in Switzerland
 					</div>
 					<div class="stat">
 						<b>13-17</b>
@@ -596,9 +834,9 @@
 				</article>
 				<article class="card">
 					<span class="tag">Results</span>
-					<h3>Season Log</h3>
+					<h3>World Finals Bound</h3>
 					<p>
-						Our 2026 season goal is to improve race consistency and qualify for top-tier events.
+						We qualified for the H2GP World Finals in Switzerland and are preparing our strongest car yet.
 					</p>
 				</article>
 			</div>
@@ -611,19 +849,19 @@
 			</div>
 			<div class="gallery-grid">
 				<!-- Maintainer note: replace these temporary files in images/ with your real team photos. -->
-				<figure class="photo-card">
+				<figure class="photo-card" tabindex="0">
 					<img src="images/gallery-build.svg" alt="Untitled Racers students working on car assembly">
 					<p>Build session in the workshop: chassis setup and wiring checks.</p>
 				</figure>
-				<figure class="photo-card">
+				<figure class="photo-card" tabindex="0">
 					<img src="images/gallery-test.svg" alt="Untitled Racers testing hydrogen car performance">
 					<p>Track testing for speed consistency and corner control.</p>
 				</figure>
-				<figure class="photo-card">
+				<figure class="photo-card" tabindex="0">
 					<img src="images/gallery-race.svg" alt="Untitled Racers posing at competition">
 					<p>Competition day energy with the full Irvington team on site.</p>
 				</figure>
-				<figure class="photo-card">
+				<figure class="photo-card" tabindex="0">
 					<img src="images/gallery-pit.svg" alt="Untitled Racers pit crew preparing for race">
 					<p>Pit crew prep focused on quick checks and clean handoffs.</p>
 				</figure>
@@ -640,7 +878,7 @@
 					<span class="tag">Sponsors</span>
 					<h3>Partner Opportunities</h3>
 					<p>
-						Support helps cover race fees, replacement parts, practice materials, and travel.
+						We are actively seeking sponsors to help fund our Switzerland World Finals travel, race fees, and vehicle upgrades.
 					</p>
 				</article>
 				<article class="card">
@@ -654,7 +892,7 @@
 					<span class="tag">Contact</span>
 					<h3>Reach The Team</h3>
 					<p>
-						For sponsorship and collaboration inquiries, contact the Irvington High School team advisors.
+						If you can support Untitled Racers, please connect with our Irvington High School team advisors.
 					</p>
 				</article>
 			</div>
@@ -676,10 +914,557 @@
 			</ul>
 			<p class="muted">Race formats and participation details can change by season; verify before publishing official claims.</p>
 		</div>
+		<div class="easter-egg-wrap">
+			<button id="easterEggButton" class="easter-egg-trigger" type="button">dont click me</button>
+		</div>
 	</footer>
+
+	<div class="lightbox-overlay" id="galleryLightbox" aria-hidden="true">
+		<div class="lightbox-card">
+			<img id="lightboxImage" src="" alt="Expanded gallery view">
+			<div class="lightbox-meta">
+				<span id="lightboxCaption">Untitled Racers Gallery</span>
+				<button id="lightboxClose" class="lightbox-close" type="button">Close</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="game-overlay" id="gameOverlay" aria-hidden="true">
+		<div class="game-panel">
+			<div class="game-top">
+				<h2>Untitled Racers Secret Track</h2>
+				<button id="closeGameButton" class="game-close" type="button">Close</button>
+			</div>
+			<p class="game-help">Use W A S D to drive. Rebound off borders, navigate the simple maze, and manually swap to the next battery pack or hydrogen cell when needed.</p>
+			<div class="game-hud">
+				<div class="hud-card">
+					<div class="hud-head"><span>Battery Amount</span><span id="batteryValue">100% (2 packs left)</span></div>
+					<div class="meter"><div id="batteryMeter" class="meter-fill battery"></div></div>
+				</div>
+				<div class="hud-card">
+					<div class="hud-head"><span>Hydrogen Stick Fuel Cells Remaining</span><span id="sticksValue">3</span></div>
+					<div class="meter"><div id="sticksMeter" class="meter-fill sticks"></div></div>
+				</div>
+				<div class="hud-card">
+					<div class="hud-head"><span>Fuel Left In Current Cell</span><span id="cellValue">100%</span></div>
+					<div class="meter"><div id="cellMeter" class="meter-fill cell"></div></div>
+				</div>
+			</div>
+			<canvas id="miniRace" class="game-canvas" width="960" height="540"></canvas>
+			<div class="game-controls">
+				<button id="swapBatteryButton" class="game-action" type="button">Swap Battery (B)</button>
+				<button id="swapCellButton" class="game-action" type="button">Swap Fuel Cell (F)</button>
+			</div>
+			<p id="gameStatus" class="game-status">Laps: 0 | Speed: 0 mph | Last lap: --</p>
+		</div>
+	</div>
 
 	<script>
 		document.getElementById("year").textContent = new Date().getFullYear();
+
+		const overlay = document.getElementById("gameOverlay");
+		const openButton = document.getElementById("easterEggButton");
+		const closeButton = document.getElementById("closeGameButton");
+		const canvas = document.getElementById("miniRace");
+		const ctx = canvas.getContext("2d");
+
+		const batteryValue = document.getElementById("batteryValue");
+		const sticksValue = document.getElementById("sticksValue");
+		const cellValue = document.getElementById("cellValue");
+		const batteryMeter = document.getElementById("batteryMeter");
+		const sticksMeter = document.getElementById("sticksMeter");
+		const cellMeter = document.getElementById("cellMeter");
+		const gameStatus = document.getElementById("gameStatus");
+		const swapBatteryButton = document.getElementById("swapBatteryButton");
+		const swapCellButton = document.getElementById("swapCellButton");
+		const photoCards = document.querySelectorAll(".photo-card");
+		const galleryLightbox = document.getElementById("galleryLightbox");
+		const lightboxImage = document.getElementById("lightboxImage");
+		const lightboxCaption = document.getElementById("lightboxCaption");
+		const lightboxClose = document.getElementById("lightboxClose");
+
+		const state = {
+			battery: 100,
+			batteryPacksRemaining: 2,
+			sticksRemaining: 3,
+			totalSticks: 3,
+			cellFuel: 100,
+			carRadius: 10,
+			x: 0,
+			y: 0,
+			prevX: 0,
+			heading: -Math.PI / 2,
+			speed: 0,
+			laps: 0,
+			lastLapSeconds: null,
+			lastLapMark: performance.now(),
+			prevY: 0,
+			lastCrossMark: performance.now(),
+			track: null
+		};
+
+		const keys = {
+			KeyW: false,
+			KeyA: false,
+			KeyS: false,
+			KeyD: false
+		};
+
+		let gameRunning = false;
+		let frameId = null;
+		let previousTick = 0;
+
+		function clamp(value, min, max) {
+			return Math.max(min, Math.min(max, value));
+		}
+
+		function setupTrack() {
+			const w = canvas.width;
+			const h = canvas.height;
+			const bounds = { left: 48, top: 48, right: w - 48, bottom: h - 48 };
+			const startLineX = bounds.left + 74;
+			const startLineTop = bounds.top + 24;
+			const startLineBottom = bounds.top + 134;
+			const obstacles = [
+				{ type: "rect", x: bounds.left + 150, y: bounds.top + 72, w: 540, h: 24 },
+				{ type: "rect", x: bounds.left + 150, y: bounds.top + 72, w: 24, h: 230 },
+				{ type: "rect", x: bounds.left + 360, y: bounds.top + 96, w: 24, h: 240 },
+				{ type: "rect", x: bounds.left + 170, y: bounds.top + 278, w: 220, h: 24 },
+				{ type: "rect", x: bounds.left + 550, y: bounds.top + 72, w: 24, h: 198 },
+				{ type: "rect", x: bounds.left + 470, y: bounds.top + 246, w: 240, h: 24 },
+				{ type: "rect", x: bounds.right - 150, y: bounds.top + 158, w: 24, h: 240 },
+				{ type: "rect", x: bounds.left + 290, y: bounds.bottom - 76, w: 470, h: 24 },
+				{ type: "rect", x: bounds.left + 240, y: bounds.bottom - 136, w: 24, h: 84 }
+			];
+
+			state.track = { bounds, obstacles, startLineX, startLineTop, startLineBottom };
+			state.x = bounds.left + 88;
+			state.y = bounds.bottom - 84;
+			state.prevX = state.x;
+			state.prevY = state.y;
+			state.heading = 0;
+			state.speed = 0;
+			state.laps = 0;
+			state.lastLapSeconds = null;
+			state.lastLapMark = performance.now();
+			state.lastCrossMark = performance.now();
+			state.battery = 100;
+			state.batteryPacksRemaining = 2;
+			state.sticksRemaining = 3;
+			state.totalSticks = 3;
+			state.cellFuel = 100;
+		}
+
+		function isOnRoad(x, y) {
+			const b = state.track.bounds;
+			const r = state.carRadius;
+			if (x < b.left + r || x > b.right - r || y < b.top + r || y > b.bottom - r) {
+				return false;
+			}
+
+			for (const obstacle of state.track.obstacles) {
+				if (obstacle.type === "rect") {
+					if (
+						x > obstacle.x - r &&
+						x < obstacle.x + obstacle.w + r &&
+						y > obstacle.y - r &&
+						y < obstacle.y + obstacle.h + r
+					) {
+						return false;
+					}
+				} else {
+					const dx = x - obstacle.x;
+					const dy = y - obstacle.y;
+					if (Math.hypot(dx, dy) < obstacle.r + r) {
+						return false;
+					}
+				}
+			}
+
+			return true;
+		}
+
+		function reflectVelocity(normalX, normalY) {
+			const vx = Math.cos(state.heading) * state.speed;
+			const vy = Math.sin(state.heading) * state.speed;
+			const dot = vx * normalX + vy * normalY;
+			const rvx = vx - 2 * dot * normalX;
+			const rvy = vy - 2 * dot * normalY;
+			state.speed = Math.hypot(rvx, rvy) * 0.72;
+			state.heading = Math.atan2(rvy, rvx);
+		}
+
+		function handleBoundaryBounce(nx, ny) {
+			const b = state.track.bounds;
+			const r = state.carRadius;
+			let bounced = false;
+
+			if (nx < b.left + r) {
+				state.x = b.left + r;
+				reflectVelocity(1, 0);
+				bounced = true;
+			} else if (nx > b.right - r) {
+				state.x = b.right - r;
+				reflectVelocity(-1, 0);
+				bounced = true;
+			}
+
+			if (ny < b.top + r) {
+				state.y = b.top + r;
+				reflectVelocity(0, 1);
+				bounced = true;
+			} else if (ny > b.bottom - r) {
+				state.y = b.bottom - r;
+				reflectVelocity(0, -1);
+				bounced = true;
+			}
+
+			return bounced;
+		}
+
+		function collideRect(nx, ny, obstacle) {
+			const r = state.carRadius;
+			if (
+				nx <= obstacle.x - r ||
+				nx >= obstacle.x + obstacle.w + r ||
+				ny <= obstacle.y - r ||
+				ny >= obstacle.y + obstacle.h + r
+			) {
+				return false;
+			}
+
+			const distances = [
+				{ d: Math.abs(nx - obstacle.x), n: [-1, 0], snap: () => { state.x = obstacle.x - r; } },
+				{ d: Math.abs(nx - (obstacle.x + obstacle.w)), n: [1, 0], snap: () => { state.x = obstacle.x + obstacle.w + r; } },
+				{ d: Math.abs(ny - obstacle.y), n: [0, -1], snap: () => { state.y = obstacle.y - r; } },
+				{ d: Math.abs(ny - (obstacle.y + obstacle.h)), n: [0, 1], snap: () => { state.y = obstacle.y + obstacle.h + r; } }
+			];
+
+			distances.sort((a, b) => a.d - b.d);
+			distances[0].snap();
+			reflectVelocity(distances[0].n[0], distances[0].n[1]);
+			return true;
+		}
+
+		function collideCircle(nx, ny, obstacle) {
+			const dx = nx - obstacle.x;
+			const dy = ny - obstacle.y;
+			const distance = Math.hypot(dx, dy);
+			const minDistance = obstacle.r + state.carRadius;
+			if (distance >= minDistance) {
+				return false;
+			}
+
+			const nxn = distance === 0 ? 1 : dx / distance;
+			const nyn = distance === 0 ? 0 : dy / distance;
+			state.x = obstacle.x + nxn * minDistance;
+			state.y = obstacle.y + nyn * minDistance;
+			reflectVelocity(nxn, nyn);
+			return true;
+		}
+
+		function handleObstacleBounces(nx, ny) {
+			for (const obstacle of state.track.obstacles) {
+				if (obstacle.type === "rect") {
+					if (collideRect(nx, ny, obstacle)) {
+						return true;
+					}
+				} else if (collideCircle(nx, ny, obstacle)) {
+					return true;
+				}
+			}
+			return false;
+		}
+
+		function drawTrack() {
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			ctx.fillStyle = "#12274a";
+			ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+			const b = state.track.bounds;
+			ctx.fillStyle = "#6d7f4f";
+			ctx.fillRect(b.left, b.top, b.right - b.left, b.bottom - b.top);
+
+			ctx.strokeStyle = "#dbe5f8";
+			ctx.lineWidth = 4;
+			ctx.strokeRect(b.left, b.top, b.right - b.left, b.bottom - b.top);
+
+			ctx.setLineDash([12, 12]);
+			ctx.strokeStyle = "rgba(255,255,255,0.7)";
+			ctx.lineWidth = 2;
+			ctx.strokeRect(b.left + 18, b.top + 18, b.right - b.left - 36, b.bottom - b.top - 36);
+			ctx.setLineDash([]);
+
+			for (const obstacle of state.track.obstacles) {
+				ctx.fillStyle = "#1f355d";
+				ctx.strokeStyle = "#f0f5ff";
+				ctx.lineWidth = 2;
+				if (obstacle.type === "rect") {
+					ctx.fillRect(obstacle.x, obstacle.y, obstacle.w, obstacle.h);
+					ctx.strokeRect(obstacle.x, obstacle.y, obstacle.w, obstacle.h);
+				} else {
+					ctx.beginPath();
+					ctx.arc(obstacle.x, obstacle.y, obstacle.r, 0, Math.PI * 2);
+					ctx.fill();
+					ctx.stroke();
+				}
+			}
+
+			ctx.strokeStyle = "#f47a2a";
+			ctx.lineWidth = 4;
+			ctx.beginPath();
+			ctx.moveTo(state.track.startLineX, state.track.startLineTop);
+			ctx.lineTo(state.track.startLineX, state.track.startLineBottom);
+			ctx.stroke();
+
+			ctx.fillStyle = "#e7f0ff";
+			ctx.font = "700 16px Space Grotesk, sans-serif";
+			ctx.fillText("START", state.track.startLineX + 8, state.track.startLineTop + 16);
+		}
+
+		function drawCar() {
+			ctx.save();
+			ctx.translate(state.x, state.y);
+			ctx.rotate(state.heading);
+
+			ctx.fillStyle = "#f47a2a";
+			ctx.fillRect(-18, -10, 36, 20);
+
+			ctx.fillStyle = "#ffffff";
+			ctx.fillRect(-4, -8, 12, 16);
+
+			ctx.fillStyle = "#0f1a2b";
+			ctx.fillRect(12, -4, 8, 8);
+
+			ctx.restore();
+		}
+
+		function updateHud() {
+			batteryValue.textContent = `${Math.round(state.battery)}% (${state.batteryPacksRemaining} packs left)`;
+			sticksValue.textContent = `${state.sticksRemaining}`;
+			cellValue.textContent = `${Math.round(state.cellFuel)}%`;
+
+			batteryMeter.style.width = `${state.battery}%`;
+			const sticksPct = (state.sticksRemaining / state.totalSticks) * 100;
+			sticksMeter.style.width = `${sticksPct}%`;
+			cellMeter.style.width = `${state.cellFuel}%`;
+
+			const mph = Math.max(0, Math.round(state.speed * 0.22));
+			const lastLap = state.lastLapSeconds ? `${state.lastLapSeconds.toFixed(1)}s` : "--";
+			gameStatus.textContent = `Laps: ${state.laps} | Speed: ${mph} mph | Last lap: ${lastLap}`;
+
+			swapBatteryButton.disabled = state.battery >= 100 || state.batteryPacksRemaining <= 0;
+			swapCellButton.disabled = state.cellFuel >= 100 || state.sticksRemaining <= 0;
+		}
+
+		function updatePhysics(dt, now) {
+			const hasFuel = state.cellFuel > 0;
+			const hasBattery = state.battery > 0;
+
+			if (keys.KeyW && hasFuel && hasBattery) {
+				state.speed += 280 * dt;
+			}
+
+			if (keys.KeyS) {
+				state.speed -= 300 * dt;
+			}
+
+			state.speed *= 0.992;
+			state.speed = clamp(state.speed, -90, 250);
+
+			const steeringLoad = (keys.KeyA || keys.KeyD) ? 1 : 0;
+			const turnFactor = clamp(Math.abs(state.speed) / 170, 0.1, 1.2);
+			if (keys.KeyA) {
+				state.heading -= 2.6 * turnFactor * dt;
+			}
+			if (keys.KeyD) {
+				state.heading += 2.6 * turnFactor * dt;
+			}
+
+			state.prevX = state.x;
+			state.prevY = state.y;
+			const nextX = state.x + Math.cos(state.heading) * state.speed * dt;
+			const nextY = state.y + Math.sin(state.heading) * state.speed * dt;
+			state.x = nextX;
+			state.y = nextY;
+
+			if (!handleBoundaryBounce(nextX, nextY)) {
+				handleObstacleBounces(nextX, nextY);
+			}
+
+			const onRoad = isOnRoad(state.x, state.y);
+			if (Math.abs(state.speed) > 2) {
+				const speedLoad = Math.abs(state.speed) / 230;
+				state.cellFuel -= (0.7 + speedLoad * 1.7 + (keys.KeyW ? 0.75 : 0)) * dt;
+				state.battery -= (0.6 + speedLoad * 1.3 + steeringLoad * 0.45 + (onRoad ? 0 : 0.95)) * dt;
+			} else {
+				state.battery += 0.75 * dt;
+			}
+
+			if (state.cellFuel <= 0) {
+				state.cellFuel = 0;
+				state.speed *= 0.965;
+			}
+
+			if (state.battery <= 0) {
+				state.battery = 0;
+				state.speed *= 0.965;
+			}
+
+			state.battery = clamp(state.battery, 0, 100);
+			state.cellFuel = clamp(state.cellFuel, 0, 100);
+
+			const crossedStartLine =
+				state.prevX < state.track.startLineX &&
+				state.x >= state.track.startLineX &&
+				state.y >= state.track.startLineTop &&
+				state.y <= state.track.startLineBottom &&
+				Math.abs(state.speed) > 45 &&
+				now - state.lastCrossMark > 2500;
+
+			if (crossedStartLine) {
+				state.laps += 1;
+				const lapMs = now - state.lastLapMark;
+				state.lastLapSeconds = lapMs / 1000;
+				state.lastLapMark = now;
+				state.lastCrossMark = now;
+			}
+		}
+
+		function swapBattery() {
+			if (state.battery < 100 && state.batteryPacksRemaining > 0) {
+				state.batteryPacksRemaining -= 1;
+				state.battery = 100;
+			}
+		}
+
+		function swapFuelCell() {
+			if (state.cellFuel < 100 && state.sticksRemaining > 0) {
+				state.sticksRemaining -= 1;
+				state.cellFuel = 100;
+			}
+		}
+
+		function gameLoop(timestamp) {
+			if (!gameRunning) {
+				return;
+			}
+
+			if (!previousTick) {
+				previousTick = timestamp;
+			}
+
+			const dt = Math.min((timestamp - previousTick) / 1000, 0.033);
+			previousTick = timestamp;
+
+			updatePhysics(dt, timestamp);
+			drawTrack();
+			drawCar();
+			updateHud();
+
+			frameId = requestAnimationFrame(gameLoop);
+		}
+
+		function openGame() {
+			setupTrack();
+			overlay.classList.add("is-open");
+			overlay.setAttribute("aria-hidden", "false");
+			document.body.style.overflow = "hidden";
+			gameRunning = true;
+			previousTick = 0;
+			frameId = requestAnimationFrame(gameLoop);
+		}
+
+		function closeGame() {
+			overlay.classList.remove("is-open");
+			overlay.setAttribute("aria-hidden", "true");
+			document.body.style.overflow = "";
+			gameRunning = false;
+			if (frameId) {
+				cancelAnimationFrame(frameId);
+				frameId = null;
+			}
+		}
+
+		function openLightboxFromCard(card) {
+			const img = card.querySelector("img");
+			const caption = card.querySelector("p");
+			if (!img) {
+				return;
+			}
+
+			lightboxImage.src = img.src;
+			lightboxImage.alt = img.alt || "Expanded gallery image";
+			lightboxCaption.textContent = caption ? caption.textContent : "Untitled Racers Gallery";
+			galleryLightbox.classList.add("is-open");
+			galleryLightbox.setAttribute("aria-hidden", "false");
+			document.body.style.overflow = "hidden";
+		}
+
+		function closeLightbox() {
+			galleryLightbox.classList.remove("is-open");
+			galleryLightbox.setAttribute("aria-hidden", "true");
+			lightboxImage.src = "";
+			if (!overlay.classList.contains("is-open")) {
+				document.body.style.overflow = "";
+			}
+		}
+
+		openButton.addEventListener("click", openGame);
+		closeButton.addEventListener("click", closeGame);
+		swapBatteryButton.addEventListener("click", swapBattery);
+		swapCellButton.addEventListener("click", swapFuelCell);
+
+		overlay.addEventListener("click", (event) => {
+			if (event.target === overlay) {
+				closeGame();
+			}
+		});
+
+		for (const card of photoCards) {
+			card.addEventListener("click", () => openLightboxFromCard(card));
+			card.addEventListener("keydown", (event) => {
+				if (event.code === "Enter" || event.code === "Space") {
+					event.preventDefault();
+					openLightboxFromCard(card);
+				}
+			});
+		}
+
+		lightboxClose.addEventListener("click", closeLightbox);
+		galleryLightbox.addEventListener("click", (event) => {
+			if (event.target === galleryLightbox) {
+				closeLightbox();
+			}
+		});
+
+		document.addEventListener("keydown", (event) => {
+			if (event.code in keys) {
+				keys[event.code] = true;
+				event.preventDefault();
+			}
+			if (event.code === "KeyB" && overlay.classList.contains("is-open")) {
+				swapBattery();
+				event.preventDefault();
+			}
+			if (event.code === "KeyF" && overlay.classList.contains("is-open")) {
+				swapFuelCell();
+				event.preventDefault();
+			}
+			if (event.code === "Escape" && overlay.classList.contains("is-open")) {
+				closeGame();
+			}
+			if (event.code === "Escape" && galleryLightbox.classList.contains("is-open")) {
+				closeLightbox();
+			}
+		});
+
+		document.addEventListener("keyup", (event) => {
+			if (event.code in keys) {
+				keys[event.code] = false;
+				event.preventDefault();
+			}
+		});
 	</script>
 </body>
 </html>
